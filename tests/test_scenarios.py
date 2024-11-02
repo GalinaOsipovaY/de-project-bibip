@@ -108,14 +108,14 @@ class TestCarServiceScenarios:
 
         for car in car_data:
             service.add_car(car)
-
+#1
     def test_add_new_car(self, tmpdir: str, car_data: list[Car], model_data: list[Model]) -> None:
         service = CarService(tmpdir)
 
         self._fill_initial_data(service, car_data, model_data)
 
         assert True
-
+#2
     def test_sell_car(self, tmpdir: str, car_data: list[Car], model_data: list[Model]) -> None:
         service = CarService(tmpdir)
 
@@ -132,7 +132,7 @@ class TestCarServiceScenarios:
         res = service.get_car_info("JM1BL1M58C1614725")
         assert res is not None
         assert res.status == CarStatus.sold
-
+#3
     def test_list_cars_by_available_status(self, tmpdir: str, car_data: list[Car], model_data: list[Model]):
         service = CarService(tmpdir)
 
@@ -141,7 +141,7 @@ class TestCarServiceScenarios:
         available_cars = [car for car in car_data if car.status == CarStatus.available]
 
         assert service.get_cars(CarStatus.available) == available_cars
-
+#4
     def test_list_full_info_by_vin(self, tmpdir: str, car_data: list[Car], model_data: list[Model]):
         service = CarService(tmpdir)
 
@@ -181,7 +181,7 @@ class TestCarServiceScenarios:
         )
 
         assert service.get_car_info("KNAGM4A77D5316538") == full_info_with_sale
-
+#5
     def test_update_vin(self, tmpdir: str, car_data: list[Car], model_data: list[Model]):
         service = CarService(tmpdir)
 
@@ -206,7 +206,7 @@ class TestCarServiceScenarios:
         full_info_no_sale.vin = "UPDGM4A77D5316538"
         assert service.get_car_info("UPDGM4A77D5316538") == full_info_no_sale
         assert service.get_car_info("KNAGM4A77D5316538") is None
-
+#6
     def test_delete_sale(self, tmpdir: str, car_data: list[Car], model_data: list[Model]):
         service = CarService(tmpdir)
 
@@ -230,7 +230,7 @@ class TestCarServiceScenarios:
         car = service.get_car_info("KNAGM4A77D5316538")
         assert car is not None
         assert car.status == CarStatus.available
-
+#7
     def test_top_3_models_by_sales(self, tmpdir: str, car_data: list[Car], model_data: list[Model]):
         service = CarService(tmpdir)
 
