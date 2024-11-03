@@ -152,23 +152,6 @@ class CarService:
             lines = file.readlines()
             for line in lines:
                 vin, model, price, date_start, car_status = line.strip().split(",")
-#                car = Car(
-#                    vin=parts[0],
-#                    model=int(parts[1]),
-#                    price=Decimal(parts[2]),
-#                    date_start=datetime.strptime(parts[3], "%Y-%m-%d %H:%M:%S"),
-#                    status=CarStatus(parts[4]))
-#                if car.status == status:
-#                    list.append(car)
-
-#                if parts[-1] == status:
-#                    car = Car(
-#                        vin=parts[0],
-#                        model=int(parts[1]),
-#                        price=Decimal(parts[2]),
-#                        date_start=datetime.strptime(parts[3], "%Y-%m-%d %H:%M:%S"),
-#                        status=CarStatus(parts[-1]))
-#                    list.append(car)
                 if car_status.strip() == status.value:
                     car = Car(
                         vin=vin,
@@ -178,8 +161,6 @@ class CarService:
                         status=CarStatus(car_status.strip())
                     )
                     list.append(car)
-#       list.sort(key=lambda car: car.vin)
-#       list = sorted(list, key=lambda car: car.vin)
         return list
 
     # Задание 4. Вывод детальной информации
